@@ -1,0 +1,25 @@
+/* ---------------------------------------------------------------
+   Nightfall Bliss - design tokens
+   Shared between the portfolio and the blog. Copy this file as-is
+   into the blog; only main.css differs between the two sites.
+   --------------------------------------------------------------- */
+
+:root {
+  /* palette */
+  --bg:          #1c1b1a;  /* page, one shade below the darkest warm gray */
+  --bg-raised:   #2c2a29;  /* code blocks, raised surfaces */
+  --line:        #4b4a48;  /* borders, rules, link underlines */
+  --muted:       #7a7b7a;  /* meta text, nav, captions */
+  --text-dim:    #a8a8a8;  /* body copy */
+  --text:        #d3d3d3;  /* headings, links, emphasis */
+
+  /* type */
+  --font-body: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+               ui-serif, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono",
+               Consolas, "Liberation Mono", monospace;
+
+  /* rhythm */
+  --measure: 38rem;   /* portfolio column; the blog widens this */
+  --gutter: 1.5rem;
+}
