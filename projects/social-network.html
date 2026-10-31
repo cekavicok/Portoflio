@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Social Network Simulation &middot; Gordan Djordjević</title>
+<meta name="description" content="Social Network Simulation: a graph-based C++ project for the Algorithms and Data Structures course.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<!-- Privacy / security meta tags. See README.md "Privacy & security" for
+     what these do and do not cover - some protections (HSTS, COOP/COEP,
+     frame-ancestors) can only be set via real HTTP headers once this site
+     has a server behind it, and are intentionally not faked here. -->
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Permissions-Policy" content="browsing-topics=(), interest-cohort=(), attribution-reporting=(), join-ad-interest-group=(), run-ad-auction=(), private-state-token-issuance=(), private-state-token-redemption=(), shared-storage=(), shared-storage-select-url=()">
+<link rel="stylesheet" href="../src/styles/tokens.css">
+<link rel="stylesheet" href="../src/styles/main.css">
+</head>
+<body>
+<canvas id="life-bg" aria-hidden="true"></canvas>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="name"><a href="../index.html">Gordan Djordjević</a></p>
+    <p class="tagline">software developer &middot; Belgrade, Serbia</p>
+    <nav class="nav">
+      <a href="../index.html">home</a>
+      <a href="index.html" aria-current="page">projects</a>
+      <a href="../cv.html">cv</a>
+      <a href="../about.html">about</a>
+      <a href="#" title="coming soon">blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back" href="index.html">&larr; all projects</a>
+
+    <h1>Social Network Simulation</h1>
+
+    <dl class="facts">
+      <dt>year</dt>    <dd>2025</dd>
+      <dt>stack</dt>   <dd>C++, Visual Studio 2022 (MSVC)</dd>
+      <dt>context</dt> <dd>Algorithms and Data Structures course</dd>
+      <dt>links</dt>   <dd><a href="https://github.com/cekavicok/asp_projekat">source</a></dd>
+    </dl>
+
+    <p class="lead">A simplified social network modelled as a graph: users are
+    nodes, friendships are edges.</p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li>Add and remove users.</li>
+      <li>Add and remove friendships between users.</li>
+      <li>Traverse the network with BFS and DFS.</li>
+      <li>Find the shortest path between two users.</li>
+      <li>Print the network and its adjacency information.</li>
+    </ul>
+
+    <h2>What I learned</h2>
+    <p>Choosing a graph representation and seeing how that choice shapes every
+    operation on top of it: adding a user, removing one cleanly, and searching
+    the network efficiently.</p>
+
+    <nav class="pagination">
+      <a href="portfolio-site.html">&larr; This site</a>
+      <span></span>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="links">
+      <a href="https://github.com/cekavicok">github</a>
+      <a href="https://linkedin.com/in/gordan-djordjevic-b87972335">linkedin</a>
+      <a href="mailto:gordandj@outlook.com">email</a>
+    </div>
+    <p>&copy; 2026 Gordan Djordjević</p>
+  </footer>
+
+</div>
+<script type="module" src="../src/scripts/life-bg.js"></script>
+</body>
+</html>
