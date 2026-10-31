@@ -1,0 +1,58 @@
+Practical notes for maintaining the site. For what the project is, its
+structure and how to run it, see README.md.
+
+
+ADDING A PROJECT
+----------------
+
+1. Copy an existing page in projects/ (for example bandit.html) and change
+   the <title>, <meta name="description">, <h1>, the "facts" block (year,
+   stack, source link) and the text.
+2. Add the page to "input" in vite.config.js. Pages that are not listed
+   there are LEFT OUT OF THE BUILD, even though they work in "npm run dev".
+3. Add a <div class="project"> card for it to projects/index.html.
+4. Update the <- -> "pagination" links on the neighbouring project pages.
+
+The header, navigation and footer are plain HTML repeated in every file, so a
+change to them has to be made in each page.
+
+
+UPDATING THE CV
+---------------
+
+Replace public/CV_GordanDjordjevic.pdf with the new PDF (keep the file name,
+or update the two links at the top of cv.html), then update the text in
+cv.html to match. Printing cv.html (Ctrl+P) also gives a clean black-on-white
+version without the navigation and background.
+
+
+WHERE TO CHANGE THINGS
+----------------------
+
+  colours, fonts                    src/styles/tokens.css (copy it to the blog too)
+  spacing, layout, element styles   src/styles/main.css
+  background animation              constants at the top of src/scripts/life-bg.js
+  navigation, footer                every .html file
+  favicon, images, CV PDF           public/
+
+
+CONVENTIONS
+-----------
+
+- Links to other sites open in a new tab. They carry
+      target="_blank" rel="noopener noreferrer"
+  Add the same attributes to any new external link. Internal links and
+  mailto: links open normally.
+
+- Blog: the blog lives in ../blog and is built separately. It is not linked
+  from the navigation for now. To bring it back, add
+      <a href="BLOG_URL">blog</a>
+  after the "cv" link in every page's <nav>.
+
+- Privacy and security: every page has a same-origin Content-Security-Policy,
+  a no-referrer policy and a Permissions-Policy that turns off ad-tracking
+  APIs, all as <meta> tags. Do not add third-party scripts, fonts or images;
+  the CSP will block them.
+
+The design, the background animation and the security headers are described
+in more detail in the repository README (../README.md).

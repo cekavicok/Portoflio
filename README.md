@@ -1,86 +1,62 @@
 # Portfolio
 
-Lični portfolio sajt: početna, projekti, CV i "about". Čist HTML + CSS, jedan
-JavaScript fajl za pozadinsku animaciju, a Vite služi samo za dev server i build.
-Nema frameworka, nema analitike, ništa se ne učitava sa drugih domena.
+Personal portfolio of Gordan Djordjević: a short introduction, projects and a CV.
 
-## Struktura
+The site is plain hand-written HTML and CSS, plus one JavaScript file that draws
+an interactive Game of Life in the background. There is no framework, no
+analytics and no cookies, and nothing is loaded from other domains. Vite is used
+only as a dev server and to bundle the styles and script for deployment.
+
+## Project structure
 
 ```
 portfolio/
-├── index.html                 početna: kratak uvod + "Selected work" (3 projekta)
-├── cv.html                    CV: iskustvo, obrazovanje, veštine (ima print stil)
-├── about.html                 duža biografija + kontakt
+├── index.html                 home: who I am and what I'm interested in
+├── cv.html                    CV as a web page, with links to the PDF
 │
-├── projects/                  sve što ide pod "projects" u navigaciji
-│   ├── index.html             lista svih projekata (stranica /projects/)
-│   ├── os1-kernel.html        detalji: OS1 RISC-V kernel
-│   ├── bandit.html            detalji: Bandit (browser ekstenzija)
-│   ├── portfolio-site.html    detalji: ovaj sajt
-│   └── social-network.html    detalji: ASP projekat (simulacija društvene mreže)
+├── projects/                  the "projects" section of the site
+│   ├── index.html             list of all projects, with GitHub links
+│   ├── os1-kernel.html        detail page: OS1 RISC-V kernel
+│   ├── bandit.html            detail page: Bandit, phishing-detection extension
+│   ├── portfolio-site.html    detail page: this site
+│   └── social-network.html    detail page: social network simulation (ASP)
 │
 ├── src/
 │   ├── styles/
-│   │   ├── tokens.css         boje i fontovi (deljeno sa blogom, ne menjati samo ovde)
-│   │   └── main.css           raspored i izgled svih stranica
+│   │   ├── tokens.css         colours and font stacks (shared with the blog)
+│   │   └── main.css           layout and styling for every page, incl. print
 │   └── scripts/
-│       └── life-bg.js         Game of Life animacija u pozadini (deljeno sa blogom)
+│       └── life-bg.js         Game of Life background animation (shared with the blog)
 │
-├── public/                    kopira se 1:1 u koren builda
+├── public/                    copied as-is to the root of the build
+│   ├── CV_GordanDjordjevic.pdf   the CV linked from cv.html
 │   ├── favicon.svg
-│   └── img/                   slike za stranice projekata (trenutno prazno)
+│   └── img/                   images for project pages (empty for now)
 │
-├── vite.config.js             lista svih stranica koje ulaze u build
-├── package.json               skripte: dev / build / preview
-└── dist/                      izlaz builda (generiše se, ne commituje se)
+├── vite.config.js             dev server settings and the list of pages to build
+├── package.json               npm scripts: dev, build, preview
+└── dist/                      build output (generated, not committed)
 ```
 
-### Čemu služi `projects/`
+## Running it
 
-To je sekcija sajta sa projektima. `projects/index.html` je stranica koja se
-otvara klikom na **projects** u meniju i prikazuje sve projekte sa kratkim
-opisom i linkom ka GitHub repou. Svaki ostali fajl u folderu je zasebna stranica
-sa detaljima jednog projekta (šta radi, kako radi, šta sam naučio). Stranice su
-povezane strelicama ← → na dnu, redom kao u listi.
-
-Folder postoji samo zbog organizacije i lepših URL-ova (`/projects/bandit.html`)
-— nema nikakvu posebnu logiku.
-
-## Pokretanje
+Requires Node.js 20 or newer.
 
 ```
-npm install
-npm run dev       # http://localhost:5173
-npm run build     # -> dist/
-npm run preview   # pregled builda
+npm install       # once, installs Vite
+npm run dev       # dev server at http://localhost:5173, reloads on save
+npm run build     # production build into dist/
+npm run preview   # serve dist/ locally to check the build
 ```
 
-`base: './'` u `vite.config.js` znači da `dist/` radi bilo gde: na korenu
-domena, u podfolderu, ili otvoren direktno sa diska.
+`base` is set to `'./'` in `vite.config.js`, so the contents of `dist/` work
+from a domain root, from a subfolder, or opened straight from disk. To deploy,
+upload the contents of `dist/` to any static host.
 
-## Dodavanje novog projekta
+Vite is pinned to 6.x because the installed Node is 20.17; Vite 7 needs Node
+20.19+ or 22.12+.
 
-1. Kopiraj neku postojeću stranicu iz `projects/` (npr. `bandit.html`) pod novim
-   imenom i promeni sadržaj: `<title>`, `<meta name="description">`, `<h1>`,
-   blok `facts` (godina, tehnologije, link ka izvoru) i tekst.
-2. Dodaj je u `input` u `vite.config.js`. **Bez toga stranica neće biti u
-   buildu**, iako radi u `npm run dev`.
-3. Dodaj karticu (`<div class="project">`) u `projects/index.html`, a po želji i
-   na početnu u "Selected work".
-4. Ispravi `pagination` linkove (← →) na susednim stranicama projekata.
+## More
 
-Header, meni i footer su običan HTML ponovljen u svakom fajlu — ako ih menjaš,
-menjaj svuda.
-
-## Gde se šta menja
-
-| Hoću da promenim...           | Fajl                                    |
-| ----------------------------- | --------------------------------------- |
-| boje, fontove                 | `src/styles/tokens.css` (+ kopija u blog) |
-| razmake, izgled elemenata     | `src/styles/main.css`                   |
-| pozadinsku animaciju          | konstante na vrhu `src/scripts/life-bg.js` |
-| meni / footer                 | svaki `.html` fajl posebno              |
-| favicon, slike                | `public/`                               |
-
-Detaljnije o dizajnu, animaciji i sigurnosnim `<meta>` tagovima piše u
-[README-u na nivou repoa](../README.md).
+Notes on adding projects, updating the CV, where to change things and the
+site's conventions are in [helpnotes.txt](helpnotes.txt).

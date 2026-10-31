@@ -21,7 +21,6 @@ export default defineConfig({
       input: {
         home: r('index.html'),
         cv: r('cv.html'),
-        about: r('about.html'),
         projects: r('projects/index.html'),
         os1Kernel: r('projects/os1-kernel.html'),
         bandit: r('projects/bandit.html'),
